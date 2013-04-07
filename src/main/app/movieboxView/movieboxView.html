@@ -1,0 +1,39 @@
+<div class="row" ng-controller='movieboxView.movieboxViewCtrl'>
+  <div class="span12">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <form class="navbar-search pull-left">
+          <input type="text" class="search-query" ng-model="search" placeholder="cerca ...">
+        </form>
+      </div>
+    </div>
+    <div class="tabbable">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#tabFilm" data-toggle="tab" ng-click="showMovies()">Film</a></li>
+        <li><a href="#tabSerie" data-toggle="tab" ng-click="showSeries()">Serie TV</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="tabFilm">
+          <ul class="thumbnails">
+            <li class="span2" ng-repeat="movie in movies">
+              <a href="#" class="thumbnail">
+                <img ng-src="{{movie.poster}}" style="width: 120px; height: 177px" tooltip="{{movie.title}} ({{movie.year}})">
+              </a>
+            </li>
+          </ul>
+          <div class="span10" ng-show="pageCount > 1">
+            <pagination on-select-page="movies = pageChanged(page,allMovies)" num-pages="pageCount" current-page="currentPage" max-size="maxPages"></pagination>
+          </div>
+        </div>
+        <div class="tab-pane" id="tabSerie">
+          <h3>Elenco Serie TV</h3>
+          <ul>
+            <li ng-repeat="serie in series">
+              Titolo: {{serie.title}} - Nr. stagioni: {{serie.seasons}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

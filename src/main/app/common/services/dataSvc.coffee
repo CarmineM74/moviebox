@@ -1,7 +1,3 @@
-###
-Example of a service shared across views.
-Wrapper around the data layer for the app. 
-###
 name = 'common.services.dataSvc'
 
 class DataSvc
@@ -11,11 +7,11 @@ class DataSvc
 	_get: (relPath)->
 		return @$http.get("#{@env.serverUrl}/#{relPath}")
 
-	getPeople: () ->
-		return @_get('people')
+	getMovies: () ->
+	  return @_get('data/movies_lite.json')
 
-	getPerson: (id) ->
-		return @_get("person/#{id}")
+	getSeries: () ->
+		return @_get("data/tv_lite.json")
 
 angular.module(name, []).factory(name, ['$log','$http', 'common.services.env', ($log, $http, env) ->
 	new DataSvc($log, $http, env)

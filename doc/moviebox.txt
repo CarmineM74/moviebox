@@ -1,0 +1,27 @@
+GET trendico.ru/moviebox_data/data_lite.zip -> Elenco film, musica, serie 
+GET http://trendico.ru/api/moviebox/get_tv_data?id=154&season=1
+    Dettagli sull'oggetto di interesse. Id 154 -> Arrow
+    con i link ai video :)
+
+    Esempio:
+
+    {"description":"After a violent shipwreck, billionaire playboy Oliver Queen was missing and presumed dead for five years before being discovered alive on a remote island in the Pacific. When he returns home to Starling City, his devoted mother Moira, much-beloved sister Thea, and best friend Tommy welcome him home, but they sense Oliver has been changed by his ordeal on the island...","banner":"http:\/\/trendico.ru\/upload\/banners\/1356726710.jpg","episodes":{"19":[{"id":"29461","active":1,"lang":"en","link":"http:\/\/vk.com\/video_ext.php?oid=171558231&id=164588215&hash=6c5d794cd7cd15f4"},
+
+    curl "http://vk.com/video_ext.php?oid=171558231&id=164588215&hash=6c5d794cd7cd15f4"|grep "var video_"
+
+    produce:
+
+    var video_host = 'http://cs534523.vk.me/';
+    var video_uid = '171558231';
+    var video_vtag = 'd315e83fb2';
+    var video_no_flv = 1;
+    var video_max_hd = '3';
+    var video_title = 'A1x19';
+    var video_author = 'Nita+Bolshakova';
+
+    Le risoluzioni ammesse sono: 360, 480, 720
+    Il formato: mp4
+
+    Il link all'episodio 19 con risoluzione 480 sara':
+
+    http://cs534523.vk.me/u171558231/videos/d315e83fb2.480.mp4

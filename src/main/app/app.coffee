@@ -4,34 +4,29 @@
 
 mods = [
 
+  'ui'
+  'ui.bootstrap'
 	'common.directives.glowGreenOnMouseoverDirective'
-	'common.directives.uiTooltipDirective'
 	'common.filters.toLowerFilter'
 	'common.services.dataSvc'
 	'common.services.envProvider'
 	'common.services.toastrWrapperSvc'
 
-	'detailsView.detailsViewCtrl'
-	'detailsView.personDetailsDirective'
+  'movieboxView.movieboxViewCtrl'
 
 	'index.indexCtrl'
 
-	'searchView.mattizerFilter'
-	'searchView.searchViewCtrl'
 ]
 
 ### ###########################################################################
 # Declare routes 
 ### ###########################################################################
 
-routesConfigFn = ($routeProvider)->
+routesConfigFn = ($routeProvider) ->
+  $routeProvider.when('/main',
+    {templateUrl: 'movieboxView/movieboxView.html'})
 
-	$routeProvider.when('/search',
-			{templateUrl: 'searchView/searchView.html'})
-	$routeProvider.when('/details/:id',
-			{templateUrl: 'detailsView/detailsView.html'})
-
-	$routeProvider.otherwise({redirectTo: '/search'})
+  $routeProvider.otherwise({redirectTo: '/main'})
 
 ### ###########################################################################
 # Create and bootstrap app module
@@ -40,7 +35,6 @@ routesConfigFn = ($routeProvider)->
 m = angular.module('app', mods)
 
 m.config ['$routeProvider', routesConfigFn]
-
 m.config (['common.services.envProvider', (envProvider)->
 
 	# Allows the environment provider to run whatever config block it wants.

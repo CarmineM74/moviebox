@@ -6,7 +6,6 @@ angular.module(name, []).controller(name, [
 	'common.services.env'
 	($log, $scope, envSvc) ->
 
-		$scope.env = "HELLO"
-		# $scope.env = envSvc.env
+    $scope.env = envSvc.env
 		
 	])
