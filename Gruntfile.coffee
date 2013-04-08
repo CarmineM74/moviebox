@@ -25,6 +25,9 @@ module.exports = (grunt)->
    SRC_INDEX_HTML =             "#{STAGE_APP_DIR}/index/index.html"
    DEST_INDEX_HTML =            "#{BUILD_MAIN_DIR}/index.html"
 
+   SRC_DATA =                   "#{SRC_DIR}/main/app/data"
+   DST_DATA =                   "#{BUILD_MAIN_DIR}/data"
+
    ###############################################################
    # Config
    ###############################################################
@@ -66,6 +69,12 @@ module.exports = (grunt)->
                {
                   src:           SRC_INDEX_HTML
                   dest:          DEST_INDEX_HTML
+               }
+               {
+                  expand:        true
+                  cwd:           SRC_DATA
+                  src:           '**'
+                  dest:          DST_DATA
                }
                {
                   expand:        true
