@@ -13,6 +13,7 @@ mods = [
 	'common.services.toastrWrapperSvc'
 
   'movieboxView.movieboxViewCtrl'
+  'movieboxView.postersDirective'
 
 	'index.indexCtrl'
 
@@ -33,6 +34,11 @@ routesConfigFn = ($routeProvider) ->
 ### ###########################################################################
 	
 m = angular.module('app', mods)
+
+m.config (['$httpProvider', (httpProvider) ->
+  #  httpProvider.defaults.headers.common["X-Requested-With"] = undefined
+  httpProvider.defaults.headers.common['Content-Type'] = 'application/json'
+])
 
 m.config ['$routeProvider', routesConfigFn]
 m.config (['common.services.envProvider', (envProvider)->
