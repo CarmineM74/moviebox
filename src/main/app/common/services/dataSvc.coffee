@@ -13,13 +13,15 @@ class DataSvc
 	getSeries: () ->
 	  return @_get("data/tv_lite.json")
 
-  getItemInfo: (item,kind) ->
+  getItemInfo: (item,kind,season) ->
+    #@$log.log('ITEM: ' + JSON.stringify(item))
     path = ''
     switch kind
       when 'movie'
-        path = 'http://trendico.ru/api/moviebox/get_movie_data?id=' + item.id
+        path = 'http://trendico.ru/api/moviebox/get_movie_data?id='+item.id
       when 'serie'
-        path = 'http://trendico.ru/api/moviebox/get_tv_data?id=' + item.id +'&season='
+        path = 'http://trendico.ru/api/moviebox/get_tv_data?id='+item.id+'&season='+season
+    #@$log.log('PATH: ' + path)
     return @$http.get(path)
 
 angular.module(name, []).factory(name, ['$log','$http', 'common.services.env', ($log, $http, env) ->

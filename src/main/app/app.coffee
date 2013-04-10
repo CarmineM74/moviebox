@@ -14,6 +14,7 @@ mods = [
 
   'movieboxView.movieboxViewCtrl'
   'movieboxView.postersDirective'
+  'itemDetailsView.itemDetailsViewCtrl'
 
 	'index.indexCtrl'
 
@@ -26,7 +27,8 @@ mods = [
 routesConfigFn = ($routeProvider) ->
   $routeProvider.when('/main',
     {templateUrl: 'movieboxView/movieboxView.html'})
-
+  $routeProvider.when('/details/:id/kind/:item_kind',
+    {templateUrl: 'itemDetailsView/itemDetailsView.html'})
   $routeProvider.otherwise({redirectTo: '/main'})
 
 ### ###########################################################################
@@ -36,7 +38,7 @@ routesConfigFn = ($routeProvider) ->
 m = angular.module('app', mods)
 
 m.config (['$httpProvider', (httpProvider) ->
-  #  httpProvider.defaults.headers.common["X-Requested-With"] = undefined
+  httpProvider.defaults.headers.common["X-Requested-With"] = undefined
   httpProvider.defaults.headers.common['Content-Type'] = 'application/json'
 ])
 

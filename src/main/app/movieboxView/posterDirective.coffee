@@ -6,7 +6,9 @@ angular.module(name,[]).directive('posters', [
     restrict: 'E'
     templateUrl: 'movieboxView/postersDirectiveTemplate.html'
     scope:
+      search: '='
       items: '='
       itemKind: '@'
       clicked: '&'
+      descrizioneClicked: '&'
 ])

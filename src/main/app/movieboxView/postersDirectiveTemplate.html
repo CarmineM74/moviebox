@@ -1,7 +1,10 @@
 <ul class='thumbnails'>
-  <li class='span2' ng-repeat='item in items'>
+  <li class='span2' ng-repeat='item in items|filter:search'>
     <div href='#' class='thumbnail' style='text-align: center'>
       <img ng-src='{{item.poster}}' style='width: 120px; height: 177px' tooltip='{{item.title}}' ng-click='clicked({item:item,kind:itemKind})'>
+      <div>
+        <button class='btn' type='button' ng-click='descrizioneClicked({item:item,kind:itemKind})'>Descrizione</button>
+      </div>
     </div>
   </li>
 </ul>

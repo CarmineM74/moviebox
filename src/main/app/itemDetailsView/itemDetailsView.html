@@ -1,0 +1,35 @@
+<div class='row' ng-controller='itemDetailsView.itemDetailsViewCtrl'>
+  <div class='span5'>
+    <div class='thumbnail span4'>
+      <div style='text-align: center'>
+        <h5>{{item.title}}</h5>
+      </div>
+      <img ng-src='{{item.poster}}' style='width: 120px; height: 177px'>
+      <div>
+        <h6>{{details.description}}</h6>
+      </div>
+    </div>
+  </div>
+  <div class='span6 well'>
+    <div ng-switch='item_kind'>
+      <div ng-switch-when='movie'>
+        <a class='btn' href='{{movie_link}}'>Apri video</a>
+      </div>
+      <div ng-switch-when='serie'>
+        <accordion close-others='true'>
+          <accordion-group heading="Stagione: {{s.season}}" ng-repeat='s in seasons'>
+            <br/>
+            <div class='thumbnails'>
+              <div ng-show='e' class='thumbnail span1' ng-repeat="e in s.episodes">
+                <a href='{{e.link}}'>
+                  <img ng-src='{{s.thumbs[$index]}}' style='width: 64px; height: 48px' ui-jq='tooltip' title="Episodio {{$index+1}} ({{s.titles[$index]}})">
+                </a>
+              </div>
+            </div>
+            <br/>
+          </accordion-group>
+        </accordion>
+      </div>
+    </div>
+  </div>
+</div>

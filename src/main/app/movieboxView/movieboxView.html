@@ -1,12 +1,13 @@
 <div class="row" ng-controller='movieboxView.movieboxViewCtrl'>
   <div class="span12">
-    <div class="navbar">
-      <div class="navbar-inner">
-        <form class="navbar-search pull-left">
-          <input type="text" class="search-query" ng-model="search" placeholder="cerca ...">
-        </form>
-      </div>
-    </div>
+          <div class="navbar">
+            <div class="navbar-inner">
+              <form class="navbar-search pull-left">
+                <input type="text" class="search-query" ng-model="searchq" placeholder="cerca ..." >
+                <button class='btn' ng-click='searchChanged()'>Applica filtro</button>
+              </form>
+            </div>
+          </div>
     <div class="tabbable">
       <ul class="nav nav-tabs">
         <li class="active">
@@ -18,14 +19,14 @@
       </ul>
       <div class="tab-content">
         <div class="tab-pane active" id="tabFilm">
-          <posters items='movies' item-kind='movie' clicked="itemClicked(item,kind)"></posters>
-          <div class="span11" ng-show="pageCount > 1" style='text-align: center'>
+          <posters search='searchm' items='movies' item-kind='movie' clicked="itemClicked(item,kind)" descrizione-clicked="descrizioneClicked(item,kind)"></posters>
+          <div class="span11" ng-show="(pageCount > 1) && (search=='')" style='text-align: center'>
             <pagination on-select-page="movies = pageChanged(page,allMovies)" num-pages="pageCount" current-page="currentPage" max-size="maxPages"></pagination>
           </div>
         </div>
         <div class="tab-pane" id="tabSerie">
-          <posters items='series' item-kind='serie' clicked="itemClicked(item,kind)"></posters>
-          <div class="span11" ng-show="pageCount > 1" style='text-align: center'>
+          <posters search='searchs' items='series' item-kind='serie' clicked="itemClicked(item,kind)" descrizione-clicked="descrizioneClicked(item,kind)"></posters>
+          <div class="span11" ng-show="(pageCount > 1) && (search=='')" style='text-align: center'>
             <pagination on-select-page="series = pageChanged(page,allSeries)" num-pages="pageCount" current-page="currentPage" max-size="maxPages"></pagination>
           </div>
         </div>
