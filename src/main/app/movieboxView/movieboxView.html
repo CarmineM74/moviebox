@@ -20,13 +20,13 @@
       <div class="tab-content">
         <div class="tab-pane active" id="tabFilm">
           <posters search='searchm' items='movies' item-kind='movie' clicked="itemClicked(item,kind)" descrizione-clicked="descrizioneClicked(item,kind)"></posters>
-          <div class="span11" ng-show="(pageCount > 1) && (search=='')" style='text-align: center'>
+          <div class="span11" ng-show="(pageCount > 1) && (searchm=='')" style='text-align: center'>
             <pagination on-select-page="movies = pageChanged(page,allMovies)" num-pages="pageCount" current-page="currentPage" max-size="maxPages"></pagination>
           </div>
         </div>
         <div class="tab-pane" id="tabSerie">
           <posters search='searchs' items='series' item-kind='serie' clicked="itemClicked(item,kind)" descrizione-clicked="descrizioneClicked(item,kind)"></posters>
-          <div class="span11" ng-show="(pageCount > 1) && (search=='')" style='text-align: center'>
+          <div class="span11" ng-show="(pageCount > 1) && (searchs=='')" style='text-align: center'>
             <pagination on-select-page="series = pageChanged(page,allSeries)" num-pages="pageCount" current-page="currentPage" max-size="maxPages"></pagination>
           </div>
         </div>
