@@ -7,6 +7,7 @@ modName = "#{providerName}Provider"
 class Environment
   env: 'DEV'
   serverUrl: '' # blank because all $http calls will be faked
+  version: '1.0.1'
 
 	constructor: (@$log)->
 

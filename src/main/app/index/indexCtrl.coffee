@@ -7,5 +7,6 @@ angular.module(name, []).controller(name, [
 	($log, $scope, envSvc) ->
 
     $scope.env = envSvc.env
+    $scope.version = envSvc.version
 		
 	])

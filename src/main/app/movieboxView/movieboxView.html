@@ -1,13 +1,18 @@
 <div class="row" ng-controller='movieboxView.movieboxViewCtrl'>
   <div class="span12">
-          <div class="navbar">
-            <div class="navbar-inner">
-              <form class="navbar-search pull-left">
-                <input type="text" class="search-query" ng-model="searchq" placeholder="cerca ..." >
-                <button class='btn' ng-click='searchChanged()'>Applica filtro</button>
-              </form>
-            </div>
-          </div>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <form class="navbar-form pull-left">
+          <input type="text" class="search-query" ng-model="searchq" placeholder="cerca ..." >
+          <button class='btn' ng-click='searchChanged()'>Applica filtro</button>
+          <span 'navbar-text'>Categorie</span>
+          <select ng-model='selectedCategory' ng-change='categoryChanged(selectedCategory)'>
+            <option>Tutte</option>
+            <option ng-repeat='(k,v) in categories'>{{v}}</option>
+          </select>
+        </form>
+      </div>
+    </div>
     <div class="tabbable">
       <ul class="nav nav-tabs">
         <li class="active">

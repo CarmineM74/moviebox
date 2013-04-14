@@ -38,12 +38,16 @@ angular.module(name, []).controller(name, [
           $scope.searchs = $scope.searchq
 
     $scope.pageChanged = (page,allItems) ->
+      items = allItems
+      if $scope.selectedCategory != 'Tutte'
+        items = []
+        items.push(i) for i in allItems when (i.cats.indexOf($scope.selectedCategory) != -1)
       $scope.currentPage = page
       start = (page - 1) * $scope.itemsPerPage
       stop = start + $scope.itemsPerPage - 1
-      if stop > allItems.length
-        stop = allItems.length - 1
-      return allItems[start..stop]
+      if stop > items.length
+        stop = items.length - 1
+      return items[start..stop]
 
     computePages = (items) ->
       $scope.pageCount = Math.floor(items.length / $scope.itemsPerPage)
@@ -85,5 +89,15 @@ angular.module(name, []).controller(name, [
         alert("Si e' verificato un errore durante il recupero delle informazioni!")
       )
 
+    $scope.categoryChanged = (cat) ->
+      switch $scope.showing
+        when 'movies'
+          $scope.movies = $scope.pageChanged($scope.currentPage,$scope.allMovies)
+        when 'series'
+          $scope.series = $scope.pageChanged($scope.currentPage,$scope.allSeries)
+
+    $scope.categories = []
+    $scope.selectedCategory = 'Tutte'
+    data.getCats().then((resp) -> $scope.categories = resp.data)
     $scope.showMovies()
 ])
