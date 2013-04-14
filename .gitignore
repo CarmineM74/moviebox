@@ -4,3 +4,4 @@ target
 *sublime-workspace
 .DS_Store
 *.swp
+temp/*
