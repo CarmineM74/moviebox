@@ -23,6 +23,7 @@ angular.module(name, []).controller(name, [
     $scope.searchs = ''
 
     $scope.searchChanged = () ->
+      $scope.selectedCategory = 'Tutte'
       switch $scope.showing
         when 'movies'
           if $scope.searchq != ''
